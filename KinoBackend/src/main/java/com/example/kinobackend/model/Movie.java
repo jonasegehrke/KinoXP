@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
 
@@ -16,6 +18,7 @@ import java.util.Objects;
 @Entity
 public class Movie {
         @Id
+        @GeneratedValue
         private int id;
         private String title;
         private String genre;

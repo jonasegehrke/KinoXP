@@ -1,4 +1,11 @@
 const movieResult = document.querySelector(".movie-result");
+const titleInput = document.querySelector(".title-input");
+const genreInput = document.querySelector(".genre-input");
+const ageLimitInput = document.querySelector(".age-limit-input");
+const durationInput = document.querySelector(".duration-input");
+const newMovieBtn = document.querySelector(".new-movie-btn");
+
+
 const movieUrl = `http://localhost:8080`;
 
 async function getMovies() {
@@ -10,15 +17,14 @@ async function getMovies() {
 async function deleteMovie(id) {
     await fetch(movieUrl + "/movie/" + id, {
         method: "DELETE",
-        // body: JSON.stringify(id), skal måske slettes
         headers: {"Content-type": "application/json; charset=UTF-8"}
     })
 }
 
-async function newMovie() {
-    await fetch(movieUrl, {
+async function newMovie(data) {
+    await fetch(movieUrl + "/movie", {
         method: "POST",
-        body: JSON.stringify(movie),
+        body: JSON.stringify(data),
         headers: {"Content-type": "application/json; charset=UTF-8"}
     })
 }
@@ -38,7 +44,6 @@ function movieTableHeadlines() {
     row.setAttribute("id", "table-headline");
 }
 
-movieTableHeadlines();
 
 function addRow(respData) {
     for (let i = 0; i < respData.length; i++)
@@ -69,4 +74,16 @@ function deleteRow(rowObj) {
     table.removeChild(row);
 }
 
-getMovies();
+newMovieBtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+    let data = {
+        title: titleInput.value,
+        genre: genreInput.value,
+        ageLimit: ageLimitInput.value,
+        movieDuration: durationInput.value
+    }
+    if (data){
+        newMovie(data)
+    }
+})
+
