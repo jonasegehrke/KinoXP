@@ -20,7 +20,7 @@ public class Movie {
         private String title;
         private String genre;
         private int ageLimit;
-        private double movieDuration;
+        private int movieDuration;
 
         @Override
         public boolean equals(Object o) {
