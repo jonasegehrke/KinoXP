@@ -74,6 +74,7 @@ function deleteRow(rowObj) {
     table.removeChild(row);
 }
 
+if(newMovieBtn){
 newMovieBtn.addEventListener("click", (e)=>{
     e.preventDefault();
     let data = {
@@ -83,7 +84,8 @@ newMovieBtn.addEventListener("click", (e)=>{
         movieDuration: durationInput.value
     }
     if (data){
+        console.log(data + " sent to REST")
         newMovie(data)
     }
 })
-
+}
