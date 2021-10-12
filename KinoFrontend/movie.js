@@ -1,14 +1,14 @@
 const movieResult = document.querySelector(".movie-result");
-const movieUrl = `http://localhost:8080/`;
+const movieUrl = `http://localhost:8080`;
 
 async function getMovies() {
-    const resp = await fetch(movieUrl);
+    const resp = await fetch(movieUrl + "/movies");
     const respData = await resp.json();
     addRow(respData);
 }
 
 async function deleteMovie(id) {
-    await fetch(movieUrl, {
+    await fetch(movieUrl + "/movie/" + id, {
         method: "DELETE",
         // body: JSON.stringify(id), skal måske slettes
         headers: {"Content-type": "application/json; charset=UTF-8"}
