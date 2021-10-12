@@ -24,8 +24,13 @@ public class MovieRESTController {
     @PostMapping(value = "/movie", consumes = "application/json")
     public ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
         movieRepository.save(movie);
-        return new ResponseEntity<Movie>(Movie, HttpStatus.CREATED);
+        return new ResponseEntity<Movie>(movie, HttpStatus.CREATED);
     }
 
+    @DeleteMapping(value = "/movie/{id}")
+    public ResponseEntity<Movie> deleteMovie(@PathVariable int id){
+        movieRepository.deleteById(id);
+        return new ResponseEntity<Movie>(HttpStatus.OK);
+    }
 
 }
