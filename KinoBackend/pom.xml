@@ -11,7 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>KinoBackend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging> <!-- Change this to jar for project testing -->
+    <packaging>war</packaging> <!-- Change this to jar for project testing -->
+
     <name>KinoBackend</name>
     <description>KinoBackend</description>
     <properties>
@@ -50,7 +51,7 @@
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>9.4.0.jre16</version> <!-- Change this to jre16 for project testing -->
+            <version>9.4.0.jre11</version> <!-- Change this to jre16 for project testing -->
         </dependency>
     </dependencies>
 
