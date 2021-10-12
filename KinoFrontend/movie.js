@@ -41,7 +41,7 @@ function movieTableHeadlines() {
 movieTableHeadlines();
 
 function addRow(respData) {
-    for (let i = 0; i > respData.length; i++)
+    for (let i = 0; i < respData.length; i++)
     {
         let movie = {
             id: respData[i].id,
@@ -50,7 +50,6 @@ function addRow(respData) {
             ageLimit: respData[i].ageLimit,
             movieDuration: respData[i].movieDuration
         }
-
         let rowCount = movieResult.rows.length;
         let row = movieResult.insertRow(rowCount);
 
@@ -66,7 +65,8 @@ function addRow(respData) {
 function deleteRow(rowObj) {
     let row = rowObj.parentNode.parentNode;
     let table = row.parentNode;
-    deleteMovie(row.childNodes[0].nodeValue);
+    deleteMovie(row.childNodes[0].firstChild.nodeValue);
     table.removeChild(row);
 }
 
+getMovies();
