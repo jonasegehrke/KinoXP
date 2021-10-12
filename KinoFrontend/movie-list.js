@@ -1,0 +1,2 @@
+movieTableHeadlines();
+getMovies();
