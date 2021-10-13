@@ -17,6 +17,8 @@ public class MovieRESTController {
     @Autowired
     MovieRepository movieRepository;
 
+    @Autowired
+    ShowRepository showRepository;
 
     @GetMapping("/movies")
     public List<Movie> getAllCurrentMovies(){
