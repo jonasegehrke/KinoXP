@@ -6,7 +6,8 @@ const durationInput = document.querySelector(".duration-input");
 const newMovieBtn = document.querySelector(".new-movie-btn");
 
 
-const movieUrl = `https://kinoxp.azurewebsites.net`;
+//const movieUrl = `https://kinoxp.azurewebsites.net`;
+const movieUrl = `http://localhost:8080`;
 
 async function getMovies() {
     const resp = await fetch(movieUrl + "/movies");
