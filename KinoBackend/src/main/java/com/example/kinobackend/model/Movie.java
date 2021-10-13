@@ -24,6 +24,7 @@ public class Movie {
         private String genre;
         private int ageLimit;
         private int movieDuration;
+        private String artist;
 
         @Override
         public boolean equals(Object o) {
