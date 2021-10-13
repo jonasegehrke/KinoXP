@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.List;
 import java.util.Objects;
 
 @Setter
@@ -21,6 +22,7 @@ public class Movie {
         private String genre;
         private int ageLimit;
         private double movieDuration;
+        private String Artist;
 
         @Override
         public boolean equals(Object o) {
