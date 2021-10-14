@@ -22,11 +22,14 @@ public class Show {
     private int showId;
     private String date;
     private String time;
-    private String theater;
 
     @ManyToOne
     @JoinColumn(name = "id")
     private Movie movie;
+
+    @ManyToOne
+    @JoinColumn(name = "show_id")
+    private Theater theater;
 
     @OneToMany
     @JoinColumn(name = "show_id")
