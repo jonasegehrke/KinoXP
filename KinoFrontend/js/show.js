@@ -2,8 +2,10 @@ const dateInput = document.querySelector(".date-input");
 const timeInput = document.querySelector(".time-input");
 const theaterInput = document.querySelector(".theater-input");
 const dropDownMovies = document.querySelector(".drop-down-movies");
+const dropDownTheaters = document.querySelector(".theater-drop-down");
 const newShowBtn = document.querySelector(".new-show-btn");
 const showResult = document.querySelector(".show-result");
+let theater = null;
 
 //const url = `https://kinoxp.azurewebsites.net`;
 const url = `http://localhost:8080`;
@@ -27,6 +29,20 @@ async function newShow(data) {
         body: JSON.stringify(data),
         headers: { "Content-type": "application/json; charset=UTF-8" }
     })
+}
+
+async function newTheater(data) {
+    let theaterTemp = null;
+    await fetch(url + "/theater", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-type": "application/json; charset=UTF-8" }
+    }).then((response) => response.json())
+    .then((data) => {
+        theaterTemp = data;
+    }).then(() => console.log(theaterTemp))
+
+    theater = theaterTemp;
 }
 
 function showTableHeadlines() {
@@ -57,7 +73,7 @@ function addRow(respData) {
         row.insertCell(0).innerHTML = show.showId;
         row.insertCell(1).innerHTML = show.date;
         row.insertCell(2).innerHTML = show.time;
-        row.insertCell(3).innerHTML = show.theater;
+        row.insertCell(3).innerHTML = show.theater.name;
         row.insertCell(4).innerHTML = show.movie.title;
         row.insertCell(5).innerHTML = `<a onclick="deleteRow(this)"> <button class="delete-show-btn uil uil-trash-alt"></button></a>`;
     }
@@ -77,19 +93,19 @@ if (newShowBtn) {
         let data = {
             date: dateInput.value,
             time: timeInput.value,
-            theater: theaterInput.value,
+            theater: theater,
             movie: movie
         }
         console.log(data);
         if (data) {
-            console.log(data + " sent to REST")
+            console.log(data, " sent to REST")
             newShow(data)
         }
     })
 }
 
 
-async function fillDropDownMovies(movie) {
+function fillDropDownMovies(movie) {
         const el = document.createElement("option");
         el.textContent = movie.title;
         el.setAttribute("value", `{
@@ -110,3 +126,7 @@ async function getMoviesForDropDown() {
 }
 
 getMoviesForDropDown();
+
+dropDownTheaters.addEventListener("change", async function(){
+    await newTheater(JSON.parse(dropDownTheaters.value));
+})
