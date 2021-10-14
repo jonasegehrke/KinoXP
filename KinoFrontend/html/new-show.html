@@ -46,9 +46,14 @@
     <form class="new-show-form">
         <input type="text" name="date" placeholder="date" autocomplete="off" class="new-show-input date-input">
         <input type="text" name="time" placeholder="time" autocomplete="off" class="new-show-input time-input">
-        <input type="text" name="theater" placeholder="theater" autocomplete="off" class="new-show-input theater-input">
+        <!--<input type="text" name="theater" placeholder="theater" autocomplete="off" class="new-show-input theater-input">-->
+        <select name="theater" class="theater-drop-down">
+            <option>--Theater--</option>
+            <option value='{"name":"Sal 1", "big":"true", "availableSeats":"400"}'>Sal 1</option>
+            <option value='{"name":"Sal 2", "big":"false", "availableSeats":"240"}'>Sal 2</option>
+        </select>
         <select name="movie" class="new-show-input drop-down-movies">
-            <option>--select--</option>
+            <option>--Movie--</option>
         </select>
         <button class="new-show-btn">Submit</button>
     </form>
