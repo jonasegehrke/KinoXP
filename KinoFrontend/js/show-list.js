@@ -1,0 +1,2 @@
+showTableHeadlines();
+getShows();
