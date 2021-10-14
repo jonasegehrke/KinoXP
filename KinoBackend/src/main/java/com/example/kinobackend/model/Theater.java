@@ -20,12 +20,11 @@ public class Theater {
     @Id
     @GeneratedValue
     private int theaterId;
-    private String name;
     private boolean big;
     private int availableSeats;
 
     @OneToMany
-    @JoinColumn(name = "theater_id")
+    @JoinColumn(name = "show_id")
     @JsonBackReference
     private Set<Show> shows = new HashSet<>();
 
