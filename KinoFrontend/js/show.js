@@ -73,11 +73,12 @@ function deleteRow(rowObj) {
 if (newShowBtn) {
     newShowBtn.addEventListener("click", (e) => {
         e.preventDefault();
+        const movie = JSON.parse(dropDownMovies.value);
         let data = {
             date: dateInput.value,
             time: timeInput.value,
             theater: theaterInput.value,
-            movie: dropDownMovies.value
+            movie: movie
         }
         console.log(data);
         if (data) {
@@ -91,13 +92,13 @@ async function fillDropDownMovies(movie) {
         const el = document.createElement("option");
         el.textContent = movie.title;
         el.setAttribute("value", `{
-            "id":${movie.id}, 
-            "title":${movie.title},
-            "genre":${movie.genre},
-            "ageLimit":${movie.ageLimit},
-            "movieDuration":${movie.movieDuration},
-            "artist":${movie.artist}
-        }`);
+            "id":${movie.id},
+            "title":"${movie.title}",
+            "genre":"${movie.genre}",
+            "ageLimit":"${movie.ageLimit}",
+            "movieDuration":"${movie.movieDuration}",
+            "artist":"${movie.artist}"
+            }`);
         dropDownMovies.appendChild(el);
     }
 
@@ -111,6 +112,6 @@ async function getMoviesForDropDown() {
 getMoviesForDropDown();
 
 dropDownMovies.addEventListener('change', function (){
-    let value = JSON.parse(JSON.stringify(dropDownMovies.value));
-    console.log(value.id);
+    const value = JSON.parse(dropDownMovies.value);
+    console.log(value);
 })
