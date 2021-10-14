@@ -1,12 +1,14 @@
 package com.example.kinobackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -25,6 +27,11 @@ public class Show {
     @ManyToOne
     @JoinColumn(name = "id")
     private Movie movie;
+
+    @OneToMany
+    @JoinColumn(name = "show_id")
+    @JsonBackReference
+    private Set<Booking> bookings = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
