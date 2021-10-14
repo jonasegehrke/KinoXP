@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.Objects;
 
 @Setter
@@ -15,7 +18,6 @@ import java.util.Objects;
 public class Booking {
 
     @Id
-    @GeneratedValue
     private int bookingId;
     private String bookingNumber;
     private int numberOfSeats;
