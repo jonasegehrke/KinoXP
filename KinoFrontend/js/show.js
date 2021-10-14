@@ -13,6 +13,7 @@ const url = `http://localhost:8080`;
 async function getShows() {
     const resp = await fetch(url + "/shows");
     const respData = await resp.json();
+    console.log(respData)
     addRow(respData);
 }
 
