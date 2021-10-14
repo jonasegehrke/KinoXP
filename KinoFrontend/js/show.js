@@ -58,7 +58,7 @@ function addRow(respData) {
         row.insertCell(1).innerHTML = show.date;
         row.insertCell(2).innerHTML = show.time;
         row.insertCell(3).innerHTML = show.theater;
-        row.insertCell(4).innerHTML = show.movie;
+        row.insertCell(4).innerHTML = show.movie.title;
         row.insertCell(5).innerHTML = `<a onclick="deleteRow(this)"> <button class="delete-show-btn uil uil-trash-alt"></button></a>`;
     }
 }
@@ -88,6 +88,7 @@ if (newShowBtn) {
     })
 }
 
+
 async function fillDropDownMovies(movie) {
         const el = document.createElement("option");
         el.textContent = movie.title;
@@ -102,7 +103,6 @@ async function fillDropDownMovies(movie) {
         dropDownMovies.appendChild(el);
     }
 
-
 async function getMoviesForDropDown() {
     data = await fetch(url + "/movies");
     movies = await data.json();
@@ -110,8 +110,3 @@ async function getMoviesForDropDown() {
 }
 
 getMoviesForDropDown();
-
-dropDownMovies.addEventListener('change', function (){
-    const value = JSON.parse(dropDownMovies.value);
-    console.log(value);
-})
