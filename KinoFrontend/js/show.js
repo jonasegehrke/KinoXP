@@ -93,7 +93,7 @@ async function fillDropDownMovies(movie) {
         const el = document.createElement("option");
         el.textContent = movie.title;
         el.setAttribute("value", `{
-            "id":${movie.id},
+            "id":"${movie.id}",
             "title":"${movie.title}",
             "genre":"${movie.genre}",
             "ageLimit":"${movie.ageLimit}",
