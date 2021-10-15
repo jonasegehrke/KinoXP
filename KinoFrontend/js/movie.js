@@ -5,6 +5,7 @@ const genreInput = document.querySelector(".genre-input");
 const ageLimitInput = document.querySelector(".age-limit-input");
 const durationInput = document.querySelector(".duration-input");
 const newMovieBtn = document.querySelector(".new-movie-btn");
+const inputFields = document.querySelectorAll(".form-control");
 
 
 //const movieUrl = `https://kinoxp.azurewebsites.net`;
@@ -66,9 +67,9 @@ function addRow(respData) {
         row.insertCell(1).innerHTML = movie.title;
         row.insertCell(2).innerHTML = movie.artist;
         row.insertCell(3).innerHTML = movie.genre;
-        row.insertCell(4).innerHTML = movie.ageLimit;
-        row.insertCell(5).innerHTML = movie.movieDuration;
-        row.insertCell(6).innerHTML = `<a onclick="deleteRow(this)"> <button class="delete-movie-btn uil uil-trash-alt"></button></a>`;
+        row.insertCell(4).innerHTML = movie.ageLimit + "+";
+        row.insertCell(5).innerHTML = movie.movieDuration + " min";
+        row.insertCell(6).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary delete-movie-btn uil uil-trash-alt"></button></a>`;
     }
 }
 
@@ -90,9 +91,18 @@ newMovieBtn.addEventListener("click", (e)=>{
         movieDuration: durationInput.value
     }
     if (data){
-        console.log(data + " sent to REST")
-        newMovie(data)
+        console.log(data + " sent to REST");
+        newMovie(data);
+
+        for(let i = 0; i < inputFields.length; i++){
+            inputFields[i].value = '';
+        }
+
+        alert("Movie Created!")
     }
+    
 })
 }
+
+
 

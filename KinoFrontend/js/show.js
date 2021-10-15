@@ -5,6 +5,8 @@ const dropDownMovies = document.querySelector(".drop-down-movies");
 const dropDownTheaters = document.querySelector(".theater-drop-down");
 const newShowBtn = document.querySelector(".new-show-btn");
 const showResult = document.querySelector(".show-result");
+const showInputFields = document.querySelectorAll(".form-control");
+const formSelects = document.querySelectorAll(".form-select");
 let theater = null;
 
 //const url = `https://kinoxp.azurewebsites.net`;
@@ -49,13 +51,13 @@ function showTableHeadlines() {
     let rowCount = showResult.rows.length;
     let row = showResult.insertRow(rowCount);
 
-    row.insertCell(0).innerHTML = `showId`;
-    row.insertCell(1).innerHTML = `date`;
-    row.insertCell(2).innerHTML = `time`;
-    row.insertCell(3).innerHTML = `theater`;
-    row.insertCell(4).innerHTML = `movie`;
-    row.insertCell(5).innerHTML = `duration`;
-    row.insertCell(6).innerHTML = `book`;
+    row.insertCell(0).innerHTML = `ShowId`;
+    row.insertCell(1).innerHTML = `Date`;
+    row.insertCell(2).innerHTML = `Time`;
+    row.insertCell(3).innerHTML = `Theater`;
+    row.insertCell(4).innerHTML = `Movie`;
+    row.insertCell(5).innerHTML = `Duration`;
+    row.insertCell(6).innerHTML = `Book`;
     row.insertCell(7).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
     row.setAttribute("id", "table-headline");
 }
@@ -78,8 +80,8 @@ function addRow(respData) {
         row.insertCell(3).innerHTML = show.theater.name;
         row.insertCell(4).innerHTML = show.movie.title;
         row.insertCell(5).innerHTML = show.movie.movieDuration + " min";
-        row.insertCell(6).innerHTML = `<a onclick="redirectToBooking(${show.showId})"> <button class="">Book Show</button></a>`;
-        row.insertCell(7).innerHTML = `<a onclick="deleteRow(this)"> <button class="delete-show-btn uil uil-trash-alt"></button></a>`;
+        row.insertCell(6).innerHTML = `<a onclick="redirectToBooking(${show.showId})"> <button type="button" class="btn btn-secondary">Book Show</button></a>`;
+        row.insertCell(7).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary uil uil-trash-alt"></button></a>`;
     }
 }
 
@@ -109,6 +111,15 @@ if (newShowBtn) {
         if (data) {
             console.log(data, " sent to REST")
             newShow(data)
+
+            for(let i = 0; i < showInputFields.length; i++){
+                showInputFields[i].value = '';
+            }
+            for(let i = 0; i < formSelects.length; i++){
+                formSelects[i].selectedIndex = 0;
+            }
+
+            alert("Show Created!")
         }
     })
 }
