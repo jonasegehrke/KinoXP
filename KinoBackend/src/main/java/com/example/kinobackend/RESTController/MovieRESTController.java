@@ -2,6 +2,7 @@ package com.example.kinobackend.RESTController;
 
 import com.example.kinobackend.model.Movie;
 import com.example.kinobackend.repos.MovieRepository;
+import com.example.kinobackend.repos.ShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ public class MovieRESTController {
 
     @Autowired
     MovieRepository movieRepository;
+
 
     @GetMapping("/movies")
     public List<Movie> getAllCurrentMovies(){
