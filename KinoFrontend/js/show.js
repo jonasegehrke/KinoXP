@@ -55,7 +55,8 @@ function showTableHeadlines() {
     row.insertCell(3).innerHTML = `theater`;
     row.insertCell(4).innerHTML = `movie`;
     row.insertCell(5).innerHTML = `duration`;
-    row.insertCell(6).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
+    row.insertCell(6).innerHTML = `book`;
+    row.insertCell(7).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
     row.setAttribute("id", "table-headline");
 }
 
@@ -77,8 +78,13 @@ function addRow(respData) {
         row.insertCell(3).innerHTML = show.theater.name;
         row.insertCell(4).innerHTML = show.movie.title;
         row.insertCell(5).innerHTML = show.movie.movieDuration + " min";
-        row.insertCell(6).innerHTML = `<a onclick="deleteRow(this)"> <button class="delete-show-btn uil uil-trash-alt"></button></a>`;
+        row.insertCell(6).innerHTML = `<a onclick="redirectToBooking(${show.showId})"> <button class="">Book Show</button></a>`;
+        row.insertCell(7).innerHTML = `<a onclick="deleteRow(this)"> <button class="delete-show-btn uil uil-trash-alt"></button></a>`;
     }
+}
+
+function redirectToBooking(id){
+    location.replace('/html/show-booking.html?showId=' + id);
 }
 
 function deleteRow(rowObj) {
