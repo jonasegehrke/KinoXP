@@ -1,9 +1,11 @@
 const movieResult = document.querySelector(".movie-result");
 const titleInput = document.querySelector(".title-input");
+const artistInput = document.querySelector(".artist-input");
 const genreInput = document.querySelector(".genre-input");
 const ageLimitInput = document.querySelector(".age-limit-input");
 const durationInput = document.querySelector(".duration-input");
 const newMovieBtn = document.querySelector(".new-movie-btn");
+const inputFields = document.querySelectorAll(".form-control");
 
 
 //const movieUrl = `https://kinoxp.azurewebsites.net`;
@@ -37,10 +39,11 @@ function movieTableHeadlines() {
 
     row.insertCell(0).innerHTML = `Id`;
     row.insertCell(1).innerHTML = `Title`;
-    row.insertCell(2).innerHTML = `Genre`;
-    row.insertCell(3).innerHTML = `Age limit`;
-    row.insertCell(4).innerHTML = `Movie duration`;
-    row.insertCell(5).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
+    row.insertCell(2).innerHTML = `Artist`;
+    row.insertCell(3).innerHTML = `Genre`;
+    row.insertCell(4).innerHTML = `Age limit`;
+    row.insertCell(5).innerHTML = `Movie duration`;
+    row.insertCell(6).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
 
     row.setAttribute("id", "table-headline");
 }
@@ -52,6 +55,7 @@ function addRow(respData) {
         let movie = {
             id: respData[i].id,
             title: respData[i].title,
+            artist: respData[i].artist,
             genre: respData[i].genre,
             ageLimit: respData[i].ageLimit,
             movieDuration: respData[i].movieDuration
@@ -61,10 +65,11 @@ function addRow(respData) {
 
         row.insertCell(0).innerHTML = movie.id;
         row.insertCell(1).innerHTML = movie.title;
-        row.insertCell(2).innerHTML = movie.genre;
-        row.insertCell(3).innerHTML = movie.ageLimit;
-        row.insertCell(4).innerHTML = movie.movieDuration;
-        row.insertCell(5).innerHTML = `<a onclick="deleteRow(this)"> <button class="delete-movie-btn uil uil-trash-alt"></button></a>`;
+        row.insertCell(2).innerHTML = movie.artist;
+        row.insertCell(3).innerHTML = movie.genre;
+        row.insertCell(4).innerHTML = movie.ageLimit + "+";
+        row.insertCell(5).innerHTML = movie.movieDuration + " min";
+        row.insertCell(6).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary delete-movie-btn uil uil-trash-alt"></button></a>`;
     }
 }
 
@@ -81,13 +86,23 @@ newMovieBtn.addEventListener("click", (e)=>{
     let data = {
         title: titleInput.value,
         genre: genreInput.value,
+        artist: artistInput.value,
         ageLimit: ageLimitInput.value,
         movieDuration: durationInput.value
     }
     if (data){
-        console.log(data + " sent to REST")
-        newMovie(data)
+        console.log(data + " sent to REST");
+        newMovie(data);
+
+        for(let i = 0; i < inputFields.length; i++){
+            inputFields[i].value = '';
+        }
+
+        alert("Movie Created!")
     }
+    
 })
 }
+
+
 
