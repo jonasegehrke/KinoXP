@@ -9,8 +9,8 @@ const showInputFields = document.querySelectorAll(".form-control");
 const formSelects = document.querySelectorAll(".form-select");
 let theater = null;
 
-//const url = `https://kinoxp.azurewebsites.net`;
-const url = `http://localhost:8080`;
+const url = `https://kinoxp.azurewebsites.net`;
+//const url = `http://localhost:8080`;
 
 async function getShows() {
     const resp = await fetch(url + "/shows");

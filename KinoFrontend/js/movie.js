@@ -8,8 +8,8 @@ const newMovieBtn = document.querySelector(".new-movie-btn");
 const inputFields = document.querySelectorAll(".form-control");
 
 
-//const movieUrl = `https://kinoxp.azurewebsites.net`;
-const movieUrl = `http://localhost:8080`;
+const movieUrl = `https://kinoxp.azurewebsites.net`;
+//const movieUrl = `http://localhost:8080`;
 
 async function getMovies() {
     const resp = await fetch(movieUrl + "/movies");
