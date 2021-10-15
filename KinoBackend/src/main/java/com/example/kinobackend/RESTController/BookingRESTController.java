@@ -48,7 +48,6 @@ public class BookingRESTController {
             updatedBooking.setBookingNumber(booking.getBookingNumber());
             updatedBooking.setNumberOfSeats(booking.getNumberOfSeats());
             updatedBooking.setShow(booking.getShow());
-            updatedBooking.setPaid(booking.isPaid());
             bookingRepository.save(updatedBooking);
         }
         return new ResponseEntity<>(booking, HttpStatus.OK);

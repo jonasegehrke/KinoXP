@@ -19,7 +19,6 @@ public class Booking {
     private int bookingId;
     private String bookingNumber;
     private int numberOfSeats;
-    private boolean paid;
 
     @ManyToOne
     @JoinColumn(name = "show_id")
