@@ -33,4 +33,17 @@ public class TheaterRESTController {
         theaterRepository.save(theater);
         return new ResponseEntity<Theater>(theater, HttpStatus.CREATED);
     }
+
+    @PutMapping(value = "/theater/update", consumes = "application/json")
+    public ResponseEntity<Theater> updateTheater(@RequestBody Theater theater){
+        Optional<Theater> data = theaterRepository.findById(theater.getTheaterId());
+        if(data.isPresent()){
+            Theater updatedTheater = data.get();
+            updatedTheater.setBig(theater.isBig());
+            updatedTheater.setName(theater.getName());
+            updatedTheater.setAvailableSeats(theater.getAvailableSeats());
+            theaterRepository.save(updatedTheater);
+        }
+        return new ResponseEntity<>(theater, HttpStatus.OK);
+    }
 }
