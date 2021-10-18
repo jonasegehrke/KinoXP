@@ -31,7 +31,7 @@ public class Show {
     @JoinColumn(name = "theater_id")
     private Theater theater;
 
-    @OneToMany
+    @OneToMany(orphanRemoval=true)
     @JoinColumn(name = "show_id")
     @JsonBackReference
     private Set<Booking> bookings = new HashSet<>();
