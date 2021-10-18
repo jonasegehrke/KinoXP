@@ -57,6 +57,7 @@ bookBtn.addEventListener('click', async (e) =>{
     
     const newAvailableSeats = theaterAvailableSeats.innerHTML - seatsInput.value;
 
+    if(newAvailableSeats >= 0){
     let big = null;
 
     if(theaterName.innerHTML == "Sal 1"){
@@ -82,10 +83,15 @@ bookBtn.addEventListener('click', async (e) =>{
         show: show
     }
 
+    seatsInput.value = '';
     console.log(booking);
     newBooking(booking);
+    alert("Your booking number is: " + booking.bookingNumber)
     updateTheater(newTheater);
-
+    }else{
+        alert("Please make sure that you dont exceed available seats")
+        seatsInput.value = '';
+    }
 })
 
 async function updateTheater(data) {
