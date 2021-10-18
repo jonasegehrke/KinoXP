@@ -7,6 +7,7 @@
     <title>KinoXP</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/main.css">
 
     <script src="../js/show.js" defer></script>
@@ -39,9 +40,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="new-show.html">New Show</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="bookings.html">Bookings</a>
-            </li>
             </ul>
           </div>
         </div>
@@ -49,37 +47,87 @@
 </header>
 
 <body>
+  
 
-    <div class="show-info-booking">
-        <div class="movie-info">
-            <p class="movie-title"></p>
-            <p class="movie-genre"></p>
+  <div>
+    <div class="show-info-booking bg-dark table-dark container-fluid">
+      <h1 id="Show-headline">Show information</h1>
+        <div class="movie-info row padding">
+          <div class="col">
+          <label for="movie-title">Movie title: </label>
+            <p class="movie-title "></p>
+          </div>
+          <div class="col">
+            <label for="movie-genre">Genre: </label>
+            <p class="movie-genre "></p>
+          </div>
+          <div class="col">
+            <label for="movie-artist">Artists: </label>
             <p class="movie-artist"></p>
+          </div>
+            <div class="col">
+            <label for="movie-duration">Duration: </label>
             <p class="movie-duration"></p>
+          </div>
+            <div class="col">
+            <label for="movie-genre">Age limit: </label>
             <p class="movie-age"></p>
+          </div>
+
         </div>
-        <div class="show-info">
+        <div class="show-info row padding ">
+          <div class="col">
+          <label for="show-date">Date: </label>
             <p class="show-date"></p>
+          </div>
+            <div class="col">
+
+            <label for="show-time">Time: </label>
             <p class="show-time"></p>
+          </div>
+            <div class="col">
+            <label for="show-id">Show id: </label>
             <p class="show-id"></p>
+            </div>
+          <div class="col">
+            <p ></p>
+          </div>
+          <div class="col">
+            <p ></p>
+          </div>
         </div>
-        <div class="theater-info">
+        <div class="theater-info row padding">
+          <div class="col">
+          <label for="theater-name">Theater: </label>
             <p class="theater-name"></p>
+            </div>
+            <div class="col">
+            <label for="theater-available-seats">Available seats: </label>
             <p class="theater-available-seats"></p>
+            </div>
+            <div class="col">
+            <label for="theater-id">Theater id: </label>
             <p class="theater-id"></p>
+            
+            </div>
+
+            <div class="col">
+              <p ></p>
+            </div> <div class="col">
+              <p ></p>
+            </div>
         </div>
         
-
         <form class="booking-form">
-            <input type="number" class="seats-input">
+            <input type="number" class="seats-input" placeholder="Number of seats">
             <button type="button" class="btn btn-secondary book-btn">Book</button>
         </form>
-
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-</body>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body> 
+
 
 </html>
+
+
