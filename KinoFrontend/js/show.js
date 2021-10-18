@@ -101,7 +101,6 @@ function deleteRow(rowObj) {
 if (newShowBtn) {
     newShowBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log(dropDownMovies.value);
         const movie = JSON.parse(dropDownMovies.value);
         let data = {
             date: dateInput.value,
@@ -109,9 +108,7 @@ if (newShowBtn) {
             theater: theater,
             movie: movie
         }
-        console.log(data);
         if (data) {
-            console.log(data, " sent to REST")
             newShow(data)
 
             for(let i = 0; i < showInputFields.length; i++){
@@ -147,8 +144,9 @@ async function getMoviesForDropDown() {
     movies.forEach(fillDropDownMovies);
 }
 
-getMoviesForDropDown();
 
+if(dropDownTheaters){
 dropDownTheaters.addEventListener("change", async function(){
     await newTheater(JSON.parse(dropDownTheaters.value));
 })
+}
