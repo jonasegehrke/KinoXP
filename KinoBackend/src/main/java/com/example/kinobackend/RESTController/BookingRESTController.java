@@ -52,4 +52,9 @@ public class BookingRESTController {
         }
         return new ResponseEntity<>(booking, HttpStatus.OK);
     }
+
+    @GetMapping("/booking/{search}")
+    public List<Booking> bookingSearch(@PathVariable String search){
+        return bookingRepository.findBookingByBookingNumber(search);
+    }
 }
