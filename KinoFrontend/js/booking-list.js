@@ -1,4 +1,6 @@
 const bookingResult = document.querySelector(".booking-result");
+const searchInput = document.querySelector(".search-booking-number");
+const searchBtn = document.querySelector(".submit-search");
 
 
 //const url = `https://kinoxp.azurewebsites.net`;
@@ -61,6 +63,11 @@ function addRow(respData) {
         row.insertCell(7).innerHTML = `<a onclick="saveRow(this)"><button type="button" class="btn btn-secondary uil uil-save"></button></a>`
         row.insertCell(8).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary uil uil-trash-alt"></button></a>`;
     }
+}
+
+function clearRows(){
+    bookingResult.innerHTML = '';
+    bookingTableHeadlines();
 }
 
 function deleteRow(rowObj) {
@@ -156,5 +163,18 @@ async function removeSeatsFromTheater(showId, numberOfSeats){
     })
 }
 
+
+
 getBookings();
 bookingTableHeadlines();
+
+searchBtn.addEventListener('click', async (e) =>{
+    e.preventDefault();
+ 
+
+    const resp = await fetch(url + "/booking/" + searchInput.value);
+    const respData = await resp.json();
+
+    clearRows();
+    addRow(respData);
+})
