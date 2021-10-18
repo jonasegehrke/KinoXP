@@ -26,12 +26,13 @@ function bookingTableHeadlines() {
     row.insertCell(0).innerHTML = `Booking Id`;
     row.insertCell(1).innerHTML = `Booking Number`;
     row.insertCell(2).innerHTML = `Number of seats (Editable)`;
-    row.insertCell(3).innerHTML = `Show Id`;
-    row.insertCell(4).innerHTML = `Show Title`;
-    row.insertCell(5).innerHTML = `Show Date`;
-    row.insertCell(6).innerHTML = `Show Time`;
-    row.insertCell(7).innerHTML = `Save Edit`;
-    row.insertCell(8).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
+    row.insertCell(3).innerHTML = `Theater`;
+    row.insertCell(4).innerHTML = `Show Id`;
+    row.insertCell(5).innerHTML = `Show Title`;
+    row.insertCell(6).innerHTML = `Show Date`;
+    row.insertCell(7).innerHTML = `Show Time`;
+    row.insertCell(8).innerHTML = `Save Edit`;
+    row.insertCell(9).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
 
     row.setAttribute("id", "table-headline");
 }
@@ -56,12 +57,13 @@ function addRow(respData) {
         row.insertCell(0).innerHTML = booking.bookingId;
         row.insertCell(1).innerHTML = booking.bookingNumber;
         row.insertCell(2).innerHTML = `<p contentEditable="true">${booking.numberOfSeats}</p>`;
-        row.insertCell(3).innerHTML = booking.show.showId;
-        row.insertCell(4).innerHTML = booking.show.movie.title;
-        row.insertCell(5).innerHTML = booking.show.date;
-        row.insertCell(6).innerHTML = booking.show.time;
-        row.insertCell(7).innerHTML = `<a onclick="saveRow(this)"><button type="button" class="btn btn-secondary uil uil-save"></button></a>`
-        row.insertCell(8).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary uil uil-trash-alt"></button></a>`;
+        row.insertCell(3).innerHTML = booking.show.theater.name;
+        row.insertCell(4).innerHTML = booking.show.showId;
+        row.insertCell(5).innerHTML = booking.show.movie.title;
+        row.insertCell(6).innerHTML = booking.show.date;
+        row.insertCell(7).innerHTML = booking.show.time;
+        row.insertCell(8).innerHTML = `<a onclick="saveRow(this)"><button type="button" class="btn btn-secondary uil uil-save"></button></a>`
+        row.insertCell(9).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary uil uil-trash-alt"></button></a>`;
     }
 }
 
@@ -75,7 +77,7 @@ function deleteRow(rowObj) {
     let table = row.parentNode;
 
     const numberOfSeats = row.childNodes[2].firstChild.textContent;
-    const showId = row.childNodes[3].firstChild.nodeValue;
+    const showId = row.childNodes[4].firstChild.nodeValue;
     removeSeatsFromTheater(showId, numberOfSeats);
 
     deleteBooking(row.childNodes[0].firstChild.nodeValue);
@@ -87,7 +89,7 @@ function saveRow(rowObj) {
     let table = row.parentNode;
 
     const numberOfSeats = row.childNodes[2].firstChild.textContent;
-    const showId = row.childNodes[3].firstChild.nodeValue;
+    const showId = row.childNodes[4].firstChild.nodeValue;
     const bookingId = row.childNodes[0].firstChild.nodeValue;
     //removeSeatsFromTheater(showId, numberOfSeats);
  

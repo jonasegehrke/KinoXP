@@ -91,7 +91,6 @@ newMovieBtn.addEventListener("click", (e)=>{
         movieDuration: durationInput.value
     }
     if (data){
-        console.log(data + " sent to REST");
         newMovie(data);
 
         for(let i = 0; i < inputFields.length; i++){

@@ -12,8 +12,6 @@ async function getShow(){
 async function addShowToPage(){
     const respData = await getShow();
 
-    console.log(respData)
-
     const movieTitle = document.querySelector(".movie-title");
     const movieGenre = document.querySelector(".movie-genre");
     const movieArtist = document.querySelector(".movie-artist");
@@ -46,6 +44,7 @@ async function addShowToPage(){
 
 }
 
+
 bookBtn.addEventListener('click', async (e) =>{
     e.preventDefault();
 
@@ -74,7 +73,6 @@ bookBtn.addEventListener('click', async (e) =>{
     }
 
     const bookingNumber = Math.random().toString(36).substring(2,12);
-    console.log(bookingNumber);
     const show = await getShow();
 
     const booking = {
@@ -84,7 +82,6 @@ bookBtn.addEventListener('click', async (e) =>{
     }
 
     seatsInput.value = '';
-    console.log(booking);
     newBooking(booking);
     alert("Your booking number is: " + booking.bookingNumber)
     updateTheater(newTheater);
