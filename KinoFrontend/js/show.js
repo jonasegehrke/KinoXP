@@ -57,8 +57,9 @@ function showTableHeadlines() {
     row.insertCell(3).innerHTML = `Theater`;
     row.insertCell(4).innerHTML = `Movie`;
     row.insertCell(5).innerHTML = `Duration`;
-    row.insertCell(6).innerHTML = `Book`;
-    row.insertCell(7).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
+    row.insertCell(6).innerHTML = `Available seats`;
+    row.insertCell(7).innerHTML = `Book`;
+    row.insertCell(8).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
     row.setAttribute("id", "table-headline");
 }
 
@@ -80,8 +81,9 @@ function addRow(respData) {
         row.insertCell(3).innerHTML = show.theater.name;
         row.insertCell(4).innerHTML = show.movie.title;
         row.insertCell(5).innerHTML = show.movie.movieDuration + " min";
-        row.insertCell(6).innerHTML = `<a onclick="redirectToBooking(${show.showId})"> <button type="button" class="btn btn-secondary">Book Show</button></a>`;
-        row.insertCell(7).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary uil uil-trash-alt"></button></a>`;
+        row.insertCell(6).innerHTML = show.theater.availableSeats;
+        row.insertCell(7).innerHTML = `<a onclick="redirectToBooking(${show.showId})"> <button type="button" class="btn btn-secondary">Book Show</button></a>`;
+        row.insertCell(8).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary uil uil-trash-alt"></button></a>`;
     }
 }
 
