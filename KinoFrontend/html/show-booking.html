@@ -2,138 +2,144 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>KinoXP</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../style/main.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>KinoXP</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style/main.css">
 
-    <script src="../js/show.js" defer></script>
-    <script src="../js/book.js" defer></script>
+  <script src="../js/show.js" defer></script>
+  <script src="../js/book.js" defer></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 </head>
 
 <header class="header">
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">KinoXP</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="movies.html">Movies</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="new-movie.html">New Movie</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="shows.html">Shows</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="new-show.html">New Show</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="bookings.html">Bookings</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="new-shift.html">New Shift</a>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">KinoXP</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="movies.html">Movies</a>
           </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+          <li class="nav-item">
+            <a class="nav-link" href="new-movie.html">New Movie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shows.html">Shows</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="new-show.html">New Show</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bookings.html">Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="new-shift.html">New Shift</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shifts.html">New Shift</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <body>
-  
+
 
   <div>
     <div class="show-info-booking bg-dark table-dark container-fluid">
       <h1 id="Show-headline">Show information</h1>
-        <div class="movie-info row padding">
-          <div class="col">
+      <div class="movie-info row padding">
+        <div class="col">
           <label for="movie-title">Movie title: </label>
-            <p class="movie-title "></p>
-          </div>
-          <div class="col">
-            <label for="movie-genre">Genre: </label>
-            <p class="movie-genre "></p>
-          </div>
-          <div class="col">
-            <label for="movie-artist">Artists: </label>
-            <p class="movie-artist"></p>
-          </div>
-            <div class="col">
-            <label for="movie-duration">Duration: </label>
-            <p class="movie-duration"></p>
-          </div>
-            <div class="col">
-            <label for="movie-genre">Age limit: </label>
-            <p class="movie-age"></p>
-          </div>
-
+          <p class="movie-title "></p>
         </div>
-        <div class="show-info row padding ">
-          <div class="col">
+        <div class="col">
+          <label for="movie-genre">Genre: </label>
+          <p class="movie-genre "></p>
+        </div>
+        <div class="col">
+          <label for="movie-artist">Artists: </label>
+          <p class="movie-artist"></p>
+        </div>
+        <div class="col">
+          <label for="movie-duration">Duration: </label>
+          <p class="movie-duration"></p>
+        </div>
+        <div class="col">
+          <label for="movie-genre">Age limit: </label>
+          <p class="movie-age"></p>
+        </div>
+
+      </div>
+      <div class="show-info row padding ">
+        <div class="col">
           <label for="show-date">Date: </label>
-            <p class="show-date"></p>
-          </div>
-            <div class="col">
-
-            <label for="show-time">Time: </label>
-            <p class="show-time"></p>
-          </div>
-            <div class="col">
-            <label for="show-id">Show id: </label>
-            <p class="show-id"></p>
-            </div>
-          <div class="col">
-            <p ></p>
-          </div>
-          <div class="col">
-            <p ></p>
-          </div>
+          <p class="show-date"></p>
         </div>
-        <div class="theater-info row padding">
-          <div class="col">
+        <div class="col">
+
+          <label for="show-time">Time: </label>
+          <p class="show-time"></p>
+        </div>
+        <div class="col">
+          <label for="show-id">Show id: </label>
+          <p class="show-id"></p>
+        </div>
+        <div class="col">
+          <p></p>
+        </div>
+        <div class="col">
+          <p></p>
+        </div>
+      </div>
+      <div class="theater-info row padding">
+        <div class="col">
           <label for="theater-name">Theater: </label>
-            <p class="theater-name"></p>
-            </div>
-            <div class="col">
-            <label for="theater-available-seats">Available seats: </label>
-            <p class="theater-available-seats"></p>
-            </div>
-            <div class="col">
-            <label for="theater-id">Theater id: </label>
-            <p class="theater-id"></p>
-            
-            </div>
-
-            <div class="col">
-              <p ></p>
-            </div> <div class="col">
-              <p ></p>
-            </div>
+          <p class="theater-name"></p>
         </div>
-        
-        <form class="booking-form">
-            <input type="number" class="seats-input" placeholder="Number of seats">
-            <button type="button" class="btn btn-secondary book-btn">Book</button>
-        </form>
+        <div class="col">
+          <label for="theater-available-seats">Available seats: </label>
+          <p class="theater-available-seats"></p>
+        </div>
+        <div class="col">
+          <label for="theater-id">Theater id: </label>
+          <p class="theater-id"></p>
+
+        </div>
+
+        <div class="col">
+          <p></p>
+        </div>
+        <div class="col">
+          <p></p>
+        </div>
+      </div>
+
+      <form class="booking-form">
+        <input type="number" class="seats-input" placeholder="Number of seats">
+        <button type="button" class="btn btn-secondary book-btn">Book</button>
+      </form>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
 
 
 </html>
-
-

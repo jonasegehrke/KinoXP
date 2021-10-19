@@ -8,13 +8,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style/main.css">
-    <script src="../js/shift.js" async defer></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 </head>
-
 <header class="header">
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -41,10 +40,10 @@
                         <a class="nav-link" href="bookings.html">Bookings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="new-shift.html">New Shift</a>
+                        <a class="nav-link" href="new-shift.html">New Shift</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shifts.html">New Shift</a>
+                        <a class="nav-link active" href="shifts.html">New Shift</a>
                     </li>
                 </ul>
             </div>
@@ -54,36 +53,14 @@
 
 <body>
 
-    <div class="form-container">
-        <h1>Create shift</h1>
-        <form class="new-shift-form">
-            <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
-                <input type="date" class="form-control date-input" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-sm">
-            </div>
+    <table class="table table-dark shift-result">
 
-            <div class="input-group input-group-sm mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Shift</label>
-                <select name="shift" class="form-select drop-down-shifts" id="inputGroupSelect01">
-                    <option selected>--Choose--</option>
-                </select>
-            </div>
-
-            <div class="input-group input-group-sm mb-3">
-                <label class="input-group-text" for="inputGroupSelect01">Employee</label>
-                <select name="employee" class="form-select drop-down-employees" id="inputGroupSelect01" multiple>
-                    <option selected>--Choose--</option>
-                </select>
-            </div>
-
-            <button type="button" class="btn btn-secondary new-shift-btn">Submit</button>
-        </form>
-    </div>
+    </table>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="../js/shift-list.js"></script>
 
 </body>
 
