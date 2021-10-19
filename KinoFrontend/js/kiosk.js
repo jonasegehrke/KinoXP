@@ -6,6 +6,7 @@ const amountInput = document.querySelector(".amount-input");
 const inputFields = document.querySelectorAll(".form-control");
 const totalLabel = document.querySelector(".total-label");
 const recieptList = document.querySelector(".reciept-list");
+console.log("hello World");
 
 //const url = `https://kinoxp.azurewebsites.net`;
 const url = `http://localhost:8080`;
