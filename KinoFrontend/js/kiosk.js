@@ -67,20 +67,26 @@ function addRow(respData) {
     }
 }
 
-newItemBtn.addEventListener('click', (event) => {
+newItemBtn.addEventListener('click', async(event) => {
     event.preventDefault();
+    
     let data = {
         name: nameInput.value,
         price: priceInput.value
     }
     console.log("hello");
     if (data){
-        newKioskItem(data);
+        await newKioskItem(data);
 
+        kioskResult.innerHTML = '';
+        kioskTableHeadlines();
+        
         for(let i = 0; i < inputFields.length; i++){
             inputFields[i].value = '';
         }
-        setTimeout(location.reload(),500);
+
+        getKioskItems();
+
     }
     
 });
