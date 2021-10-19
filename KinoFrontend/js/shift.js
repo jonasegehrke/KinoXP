@@ -49,6 +49,7 @@ newShiftButton.addEventListener('click', (e) => {
             formSelects[i].selectedIndex = 0;
         }
 
+        console.log("Created")
         alert("Shift Created!")
     }
     
