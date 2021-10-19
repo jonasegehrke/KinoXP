@@ -35,7 +35,7 @@ public class KioskItemRESTController {
 
     @PutMapping(value = "/kiosk-item/update", consumes = "application/json")
     public ResponseEntity<KioskItem> updateKioskItem(@RequestBody KioskItem kioskItem){
-        Optional<KioskItem> data = kioskItemRepository.findById(kioskItem.getId());
+        Optional<KioskItem> data = kioskItemRepository.findById(kioskItem.getKioskItemId());
         if(data.isPresent()){
             KioskItem updateKioskItem  = data.get();
             updateKioskItem.setName(kioskItem.getName());

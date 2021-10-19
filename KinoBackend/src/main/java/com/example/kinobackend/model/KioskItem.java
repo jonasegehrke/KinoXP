@@ -19,7 +19,7 @@ public class KioskItem {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int kioskItemId;
     private int price;
     private String name;
 
@@ -28,11 +28,11 @@ public class KioskItem {
         if (this == o) return true;
         if (!(o instanceof KioskItem)) return false;
         KioskItem kioskItem = (KioskItem) o;
-        return id == kioskItem.id;
+        return kioskItemId == kioskItem.kioskItemId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(kioskItemId);
     }
 }
