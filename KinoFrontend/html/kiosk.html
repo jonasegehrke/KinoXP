@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>KinoXP</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../style/main.css">
+        <script src="../js/kiosk.js" defer></script>
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    </head>
+    <header class="header">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html">KinoXP</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="movies.html">Movies</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="new-movie.html">New Movie</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="shows.html">Shows</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="new-show.html">New Show</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="bookings.html">Bookings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="kiosk.html">Kiosk</a>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <body>
+
+      <table class="table table-dark kiosk-result">
+  
+      </table>
+
+    <a onclick="calculate()"><button type="button" class="">Add to cart</button></a>
+    <div>
+      <div>
+        <ul class="reciept-list">
+
+        </ul>
+      </div>
+    <h2 class="total-label"></h2>
+  </div>
+
+      <div class="form-container">
+        <h3>Add additional items</h1>
+        <form class="new-item-form">
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+            <input type="text" class="form-control name-input" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm">
+          </div>
+    
+          <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Price</span>
+            <input type="number" class="form-control price-input" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm">
+          </div>
+          <button type="button" class="btn btn-secondary new-item-btn">Create</button>
+        </form>
+      </div>
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+      
+</html>
