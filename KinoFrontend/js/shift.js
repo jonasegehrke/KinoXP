@@ -37,8 +37,21 @@ newShiftButton.addEventListener('click', (e) => {
         employees: selectedEmployees
     }
     
+    if(data){
+        newShift(data);
+        const formControl = document.querySelectorAll(".form-control");
+        const formSelects = document.querySelectorAll(".form-select");
 
-    newShift(data);
+        for(let i = 0; i < formControl.length; i++){
+            formControl[i].value = '';
+        }
+        for(let i = 0; i < formSelects.length; i++){
+            formSelects[i].selectedIndex = 0;
+        }
+
+        alert("Shift Created!")
+    }
+    
 })
 
 async function getEmployeesForDropDown() {
