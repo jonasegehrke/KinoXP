@@ -9,8 +9,8 @@ const showInputFields = document.querySelectorAll(".form-control");
 const formSelects = document.querySelectorAll(".form-select");
 let theater = null;
 
-//const url = `https://kinoxp.azurewebsites.net`;
-const url = `http://localhost:8080`;
+const url = `https://kinoxp.azurewebsites.net`;
+//const url = `http://localhost:8080`;
 
 async function getShows() {
     const resp = await fetch(url + "/shows");
@@ -40,9 +40,9 @@ async function newTheater(data) {
         body: JSON.stringify(data),
         headers: { "Content-type": "application/json; charset=UTF-8" }
     }).then((response) => response.json())
-    .then((data) => {
-        theaterTemp = data;
-    }).then(() => console.log(theaterTemp))
+        .then((data) => {
+            theaterTemp = data;
+        }).then(() => console.log(theaterTemp))
 
     theater = theaterTemp;
 }
@@ -57,8 +57,9 @@ function showTableHeadlines() {
     row.insertCell(3).innerHTML = `Theater`;
     row.insertCell(4).innerHTML = `Movie`;
     row.insertCell(5).innerHTML = `Duration`;
-    row.insertCell(6).innerHTML = `Book`;
-    row.insertCell(7).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
+    row.insertCell(6).innerHTML = `Available seats`;
+    row.insertCell(7).innerHTML = `Book`;
+    row.insertCell(8).innerHTML = 'Delete <i class="uil uil-trash-alt"></i>';
     row.setAttribute("id", "table-headline");
 }
 
@@ -80,18 +81,27 @@ function addRow(respData) {
         row.insertCell(3).innerHTML = show.theater.name;
         row.insertCell(4).innerHTML = show.movie.title;
         row.insertCell(5).innerHTML = show.movie.movieDuration + " min";
-        row.insertCell(6).innerHTML = `<a onclick="redirectToBooking(${show.showId})"> <button type="button" class="btn btn-secondary">Book Show</button></a>`;
-        row.insertCell(7).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary uil uil-trash-alt"></button></a>`;
+        row.insertCell(6).innerHTML = show.theater.availableSeats;
+        row.insertCell(7).innerHTML = `<a onclick="redirectToBooking(${show.showId})"> <button type="button" class="btn btn-secondary">Book Show</button></a>`;
+        row.insertCell(8).innerHTML = `<a onclick="deleteRow(this)"> <button type="button" class="btn btn-secondary uil uil-trash-alt"></button></a>`;
     }
 }
 
-function redirectToBooking(id){
+function redirectToBooking(id) {
     location.replace('/html/show-booking.html?showId=' + id);
 }
 
-function deleteRow(rowObj) {
+async function deleteRow(rowObj) {
     let row = rowObj.parentNode.parentNode;
     let table = row.parentNode;
+
+    const resp = await fetch(url + "/show/inspect/" + row.childNodes[0].firstChild.nodeValue)
+    const respData = await resp.json();
+
+    console.log(respData);
+    var eventId = respData.calendarId;
+    deleteEvent(eventId)
+
     deleteShow(row.childNodes[0].firstChild.nodeValue);
     table.removeChild(row);
 }
@@ -99,7 +109,6 @@ function deleteRow(rowObj) {
 if (newShowBtn) {
     newShowBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log(dropDownMovies.value);
         const movie = JSON.parse(dropDownMovies.value);
         let data = {
             date: dateInput.value,
@@ -107,28 +116,77 @@ if (newShowBtn) {
             theater: theater,
             movie: movie
         }
-        console.log(data);
+
+        splitStr = data.date.split("-");
+        newDate = splitStr[0] + "-" + splitStr[1] + "-" + splitStr[2]
+
+
+        splitStartTime = data.time.split(":");
+        splitStartTime[0] = parseInt(splitStartTime[0]);
+        splitStartTime[1] = parseInt(splitStartTime[1]);
+
+        let hours = Math.floor(data.movie.movieDuration / 60)
+        let minutes = data.movie.movieDuration % 60;
+
+        splitStartTime[0] = splitStartTime[0] + hours;
+        splitStartTime[1] = splitStartTime[1] + minutes
+        if (splitStartTime[1] > 59) {
+            splitStartTime[0] = splitStartTime[0] + 1;
+            splitStartTime[1] = splitStartTime[1] % 60;
+        }
+
+        let newEnd = "";
+        if (splitStartTime[1] >= 0 && splitStartTime[1] <= 9) {
+            newEnd = splitStartTime[0] + ":" + "0" + splitStartTime[1];
+        } else {
+            newEnd = splitStartTime[0] + ":" + splitStartTime[1];
+        }
+
+
+        let calendarData = {
+            title: data.movie.title,
+            seats: data.theater.availableSeats,
+            theater: data.theater.name,
+            date: newDate,
+            start: data.time,
+            end: newEnd
+        }
+
+
         if (data) {
-            console.log(data, " sent to REST")
-            newShow(data)
+            createEvent(calendarData)
+            setTimeout(function () {
+                console.log(globalId)
+                data = {
+                    date: dateInput.value,
+                    time: timeInput.value,
+                    theater: theater,
+                    movie: movie,
+                    calendarId: globalId
+                }
 
-            for(let i = 0; i < showInputFields.length; i++){
-                showInputFields[i].value = '';
-            }
-            for(let i = 0; i < formSelects.length; i++){
-                formSelects[i].selectedIndex = 0;
-            }
+                newShow(data)
 
-            alert("Show Created!")
+                for (let i = 0; i < showInputFields.length; i++) {
+                    showInputFields[i].value = '';
+                }
+                for (let i = 0; i < formSelects.length; i++) {
+                    formSelects[i].selectedIndex = 0;
+                }
+
+                alert("Show Created!")
+            }, 500)
+
         }
     })
 }
 
 
+
 function fillDropDownMovies(movie, theater) {
-        const el = document.createElement("option");
-        el.textContent = movie.title;
-        el.setAttribute("value", `{
+    const el = document.createElement("option");
+    el.textContent = movie.title;
+    el.setAttribute("value", `{
             "id":"${movie.id}",
             "title":"${movie.title}",
             "genre":"${movie.genre}",
@@ -136,8 +194,8 @@ function fillDropDownMovies(movie, theater) {
             "movieDuration":"${movie.movieDuration}",
             "artist":"${movie.artist}"
             }`);
-        dropDownMovies.appendChild(el);
-    }
+    dropDownMovies.appendChild(el);
+}
 
 async function getMoviesForDropDown() {
     data = await fetch(url + "/movies");
@@ -145,8 +203,9 @@ async function getMoviesForDropDown() {
     movies.forEach(fillDropDownMovies);
 }
 
-getMoviesForDropDown();
 
-dropDownTheaters.addEventListener("change", async function(){
-    await newTheater(JSON.parse(dropDownTheaters.value));
-})
+if (dropDownTheaters) {
+    dropDownTheaters.addEventListener("change", async function () {
+        await newTheater(JSON.parse(dropDownTheaters.value));
+    })
+}

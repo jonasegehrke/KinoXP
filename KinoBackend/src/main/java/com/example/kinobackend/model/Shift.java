@@ -1,5 +1,6 @@
 package com.example.kinobackend.model;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,38 +16,25 @@ import java.util.Set;
 @ToString
 
 @Entity
-public class Show {
+public class Shift {
 
     @Id
     @GeneratedValue
-    private int showId;
+    private int shiftId;
     private String date;
     private String time;
-    private String calendarId;
-
-    @ManyToOne
-    @JoinColumn(name = "id")
-    private Movie movie;
-
-    @ManyToOne
-    @JoinColumn(name = "theater_id")
-    private Theater theater;
-
-    @OneToMany(orphanRemoval=true)
-    @JoinColumn(name = "show_id")
-    @JsonBackReference
-    private Set<Booking> bookings = new HashSet<>();
+    private String employees;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Show show = (Show) o;
-        return showId == show.showId;
+        Shift schedule = (Shift) o;
+        return shiftId == schedule.shiftId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(showId);
+        return Objects.hash(shiftId);
     }
 }

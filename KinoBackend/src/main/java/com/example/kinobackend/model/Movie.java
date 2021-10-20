@@ -26,7 +26,7 @@ public class Movie {
         private int movieDuration;
         private String artist;
 
-        @OneToMany
+        @OneToMany(orphanRemoval=true)
         @JoinColumn(name = "id")
         @JsonBackReference
         private Set<Show> shows = new HashSet<>();

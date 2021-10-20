@@ -2,44 +2,60 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>KinoXP</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../style/main.css">
-    <script src="../js/show.js" async defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>KinoXP</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style/main.css">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
 </head>
 
 <header class="header">
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">KinoXP</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="movies.html">Movies</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="new-movie.html">New Movie</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="shows.html">Shows</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="new-show.html">New Show</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">KinoXP</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="movies.html">Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="new-movie.html">New Movie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shows.html">Shows</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="new-show.html">New Show</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bookings.html">Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="new-shift.html">New Shift</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shifts.html">Shifts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="kiosk.html">Kiosk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="calendar.html">Calendar</a>
+      </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <body>
@@ -49,13 +65,13 @@
     <form class="new-show-form">
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="inputGroup-sizing-sm">Date</span>
-        <input type="text" class="form-control date-input" aria-label="Sizing example input"
+        <input type="date" class="form-control date-input" aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm">
       </div>
 
       <div class="input-group input-group-sm mb-3">
         <span class="input-group-text" id="inputGroup-sizing-sm">Time</span>
-        <input type="text" class="form-control time-input" aria-label="Sizing example input"
+        <input type="time" class="form-control time-input" aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-sm">
       </div>
 
@@ -63,8 +79,8 @@
         <label class="input-group-text" for="inputGroupSelect01">Theater</label>
         <select name="theater" class="form-select theater-drop-down" id="inputGroupSelect01">
           <option selected>--Choose--</option>
-          <option value='{"name":"Sal 1", "big":"true", "availableSeats":"400"}'>Sal 1</option>
-          <option value='{"name":"Sal 2", "big":"false", "availableSeats":"240"}'>Sal 2</option>
+          <option value='{"name":"Theater 1", "big":"true", "availableSeats":"400"}'>Theater 1</option>
+          <option value='{"name":"Theater 2", "big":"false", "availableSeats":"240"}'>Theater 2</option>
         </select>
       </div>
 
@@ -85,12 +101,26 @@
         <select name="movie" class="new-show-input drop-down-movies">
             <option>--Movie--</option>
         </select> -->
-        <button type="button" class="btn btn-secondary new-show-btn">Submit</button>
+      <button type="button" class="btn btn-secondary new-show-btn">Submit</button>
     </form>
   </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+
+   <!--Google calendar api-->
+   <script defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+   onreadystatechange="if (this.readyState === 'complete') this.onload()">
+   </script>
+
+  <script src="../js/calendar.js"></script>
+
+   
+
+<script src="../js/show.js"></script>
+<script src="../js/new-show.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

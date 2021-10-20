@@ -12,8 +12,6 @@ async function getShow(){
 async function addShowToPage(){
     const respData = await getShow();
 
-    console.log(respData)
-
     const movieTitle = document.querySelector(".movie-title");
     const movieGenre = document.querySelector(".movie-genre");
     const movieArtist = document.querySelector(".movie-artist");
@@ -46,6 +44,7 @@ async function addShowToPage(){
 
 }
 
+
 bookBtn.addEventListener('click', async (e) =>{
     e.preventDefault();
 
@@ -57,6 +56,7 @@ bookBtn.addEventListener('click', async (e) =>{
     
     const newAvailableSeats = theaterAvailableSeats.innerHTML - seatsInput.value;
 
+    if(newAvailableSeats >= 0){
     let big = null;
 
     if(theaterName.innerHTML == "Sal 1"){
@@ -73,7 +73,6 @@ bookBtn.addEventListener('click', async (e) =>{
     }
 
     const bookingNumber = Math.random().toString(36).substring(2,12);
-    console.log(bookingNumber);
     const show = await getShow();
 
     const booking = {
@@ -82,10 +81,21 @@ bookBtn.addEventListener('click', async (e) =>{
         show: show
     }
 
-    console.log(booking);
-    newBooking(booking);
-    updateTheater(newTheater);
+    seatsInput.value = '';
+    eventId = booking.show.calendarId;
+    const calendarEvent = {
+        seats: newAvailableSeats,
+        theater: booking.show.theater.name
+    }
+    updateEvent(eventId, calendarEvent)
 
+    newBooking(booking);
+    alert("Your booking number is: " + booking.bookingNumber)
+    updateTheater(newTheater);
+    }else{
+        alert("Please make sure that you dont exceed available seats")
+        seatsInput.value = '';
+    }
 })
 
 async function updateTheater(data) {
