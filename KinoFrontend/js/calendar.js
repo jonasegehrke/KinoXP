@@ -105,7 +105,11 @@ var globalId;
      request.execute(function (event) {
         console.log("executing")
         globalId = event.id
+    
+      
      });
+
+     
 
  }
 

@@ -147,6 +147,9 @@ if (newShowBtn) {
 
         if (data) {
             createEvent(calendarData)
+            setTimeout(function() {
+                console.log(globalId)
+            },2000)
             newShow(data)
 
             for(let i = 0; i < showInputFields.length; i++){
@@ -160,6 +163,7 @@ if (newShowBtn) {
         }
     })
 }
+
 
 
 function fillDropDownMovies(movie, theater) {
