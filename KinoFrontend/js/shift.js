@@ -6,8 +6,8 @@ const dateInput = document.querySelector(".date-input");
 let shifts = ["10:00 - 16:00", "14:00 - 22:00"];
 let employees = ["Simon", "Kurt", "Jens", "Sasha", "Sara", "Josephine", "Niels", "Klara", "Mads", "Pernille"];
 
-//const url = `https://kinoxp.azurewebsites.net`;
-const url = `http://localhost:8080`;
+const url = `https://kinoxp.azurewebsites.net`;
+//const url = `http://localhost:8080`;
 
 
 async function newShift(data) {

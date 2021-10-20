@@ -1,7 +1,7 @@
 const shiftResult = document.querySelector(".shift-result");
 
-//const url = `https://kinoxp.azurewebsites.net`;
-const url = `http://localhost:8080`;
+const url = `https://kinoxp.azurewebsites.net`;
+//const url = `http://localhost:8080`;
 
 
 async function getShifts() {

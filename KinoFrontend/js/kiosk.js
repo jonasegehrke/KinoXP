@@ -8,8 +8,8 @@ const totalLabel = document.querySelector(".total-label");
 const recieptList = document.querySelector(".reciept-list");
 console.log("hello World");
 
-//const url = `https://kinoxp.azurewebsites.net`;
-const url = `http://localhost:8080`;
+const url = `https://kinoxp.azurewebsites.net`;
+//const url = `http://localhost:8080`;
 
 async function getKioskItems() {
     const resp = await fetch(url + "/kiosk-items");

@@ -3,8 +3,8 @@ const searchInput = document.querySelector(".search-booking-number");
 const searchBtn = document.querySelector(".submit-search");
 
 
-//const url = `https://kinoxp.azurewebsites.net`;
-const url = `http://localhost:8080`;
+const url = `https://kinoxp.azurewebsites.net`;
+//const url = `http://localhost:8080`;
 
 async function getBookings() {
     const resp = await fetch(url + "/bookings");
