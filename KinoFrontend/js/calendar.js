@@ -1,8 +1,8 @@
  
 
  // Client ID and API key from the Developer Console
- var CLIENT_ID = '255944457163-jfadjaradaphkghnb0nnhd4r3pfmii4k.apps.googleusercontent.com';
- var API_KEY = 'AIzaSyBhwEHyNZj7DspTUPw6ZFMRLaRfoORIyxo'
+ var CLIENT_ID = '53484440533-6njh1rkihcknipgj25pjhdttl9r8m4h3.apps.googleusercontent.com';
+ var API_KEY = 'AIzaSyCHRrtOuSozbDoNUtEX9vToYgWJilD0iTs'
 
  // Array of API discovery doc URLs for APIs used by the quickstart
  var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -13,7 +13,6 @@
 
  var authorizeButton = document.getElementById('authorize_button');
  var signoutButton = document.getElementById('signout_button');
- var createEventButton = document.getElementById('create-event');
 
  /**
   *  On load, called to load the auth2 library and API client library.
@@ -34,12 +33,14 @@
          scope: SCOPES
      }).then(function () {
          // Listen for sign-in state changes.
+         if(authorizeButton && signoutButton){
          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
          // Handle the initial sign-in state.
          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
          authorizeButton.onclick = handleAuthClick;
          signoutButton.onclick = handleSignoutClick;
+         }
      }, function (error) {
      });
  }
@@ -49,6 +50,7 @@
   *  appropriately. After a sign-in, the API is called.
   */
  function updateSigninStatus(isSignedIn) {
+     if(authorizeButton && signoutButton){
      if (isSignedIn) {
          authorizeButton.style.display = 'none';
          signoutButton.style.display = 'block';
@@ -59,6 +61,7 @@
          signoutButton.style.display = 'none';
          console.log("Successfully logged out")
      }
+    }
  }
 
  /**
@@ -97,7 +100,7 @@ var globalId;
      };
  
      var request = gapi.client.calendar.events.insert({
-         'calendarId': 'aqlrsgiuk35ijgria71bcper48@group.calendar.google.com',
+         'calendarId': '8nna984a8ncp4s3e9uqa6m0ces@group.calendar.google.com',
          'resource': event,
      });
 
@@ -105,33 +108,22 @@ var globalId;
      request.execute(function (event) {
         console.log("executing")
         globalId = event.id
-    
-      
      });
-
-     
-
  }
 
+ function deleteEvent(eventId) {
 
- createEventButton.addEventListener('click', (e)=>{
-     e.preventDefault();
-     console.log("Hello world!")
-     data = {
-         title: "test movie",
-         seats: "240",
-         theater: "Sal 2",
-         date: "2021-10-21",
-         start: "10:00",
-         end: "12:00"
-     }
-     createEvent(data)
-    setTimeout(function() {
-        console.log(globalId)
-    },1000)
+    var request = gapi.client.calendar.events.delete({
+        'calendarId': '8nna984a8ncp4s3e9uqa6m0ces@group.calendar.google.com',
+        'eventId': eventId
+    });
 
-     
- })
+    var response;
+    request.execute(function (event) {
+       console.log("executing")
+    });
+}
+
 
 
  /* DELETE

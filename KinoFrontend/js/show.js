@@ -91,9 +91,17 @@ function redirectToBooking(id) {
     location.replace('/html/show-booking.html?showId=' + id);
 }
 
-function deleteRow(rowObj) {
+async function deleteRow(rowObj) {
     let row = rowObj.parentNode.parentNode;
     let table = row.parentNode;
+
+    const resp = await fetch(url + "/show/inspect/" + row.childNodes[0].firstChild.nodeValue)
+    const respData = await resp.json();
+
+    console.log(respData);
+    var eventId = respData.calendarId;
+    deleteEvent(eventId)
+
     deleteShow(row.childNodes[0].firstChild.nodeValue);
     table.removeChild(row);
 }
@@ -167,7 +175,7 @@ if (newShowBtn) {
                 }
 
                 alert("Show Created!")
-            }, 2000)
+            }, 500)
 
         }
     })
