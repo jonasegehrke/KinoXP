@@ -124,6 +124,26 @@ var globalId;
     });
 }
 
+async function updateEvent(eventId, data) {
+    
+
+    var event = {
+        'description': `${data.seats} available seats | ${data.theater}`
+    };
+
+    var request = gapi.client.calendar.events.patch({
+        'calendarId': '8nna984a8ncp4s3e9uqa6m0ces@group.calendar.google.com',
+        'resource': event,
+        'eventId': eventId
+    });
+
+    var response;
+    request.execute(function (event) {
+       console.log("executing")
+       globalId = event.id
+    });
+}
+
 
 
  /* DELETE
