@@ -102,6 +102,3 @@ newMovieBtn.addEventListener("click", (e)=>{
     
 })
 }
-
-
-

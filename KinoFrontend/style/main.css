@@ -51,3 +51,13 @@ body{
 .padding{
     padding: 1em;
 }
+
+.reciept-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5rem;
+}
+
+.margin-top{
+    height: 10em;
+}
