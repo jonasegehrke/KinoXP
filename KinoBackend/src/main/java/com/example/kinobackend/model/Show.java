@@ -22,6 +22,7 @@ public class Show {
     private int showId;
     private String date;
     private String time;
+    private String calendarId;
 
     @ManyToOne
     @JoinColumn(name = "id")
