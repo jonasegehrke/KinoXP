@@ -82,6 +82,13 @@ bookBtn.addEventListener('click', async (e) =>{
     }
 
     seatsInput.value = '';
+    eventId = booking.show.calendarId;
+    const calendarEvent = {
+        seats: newAvailableSeats,
+        theater: booking.show.theater.name
+    }
+    updateEvent(eventId, calendarEvent)
+
     newBooking(booking);
     alert("Your booking number is: " + booking.bookingNumber)
     updateTheater(newTheater);

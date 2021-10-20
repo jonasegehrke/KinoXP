@@ -126,6 +126,13 @@ async function updateSeatsFromTheater(bookingId, numberOfSeats){
         show: respData.show
     }
 
+    eventId = booking.show.calendarId;
+    const calendarEvent = {
+        seats: availableSeats,
+        theater: booking.show.theater.name
+    }
+    updateEvent(eventId, calendarEvent)
+
     await fetch(url + "/booking/update", {
         method: "PUT",
         body: JSON.stringify(booking),
@@ -157,6 +164,13 @@ async function removeSeatsFromTheater(showId, numberOfSeats){
         big: respData.theater.big,
         availableSeats: availableSeats
     }
+
+    eventId = respData.calendarId;
+    const calendarEvent = {
+        seats: availableSeats,
+        theater: respData.theater.name
+    }
+    updateEvent(eventId, calendarEvent)
 
     await fetch(url + "/theater/update", {
         method: "PUT",
