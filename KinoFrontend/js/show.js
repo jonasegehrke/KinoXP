@@ -40,9 +40,9 @@ async function newTheater(data) {
         body: JSON.stringify(data),
         headers: { "Content-type": "application/json; charset=UTF-8" }
     }).then((response) => response.json())
-    .then((data) => {
-        theaterTemp = data;
-    }).then(() => console.log(theaterTemp))
+        .then((data) => {
+            theaterTemp = data;
+        }).then(() => console.log(theaterTemp))
 
     theater = theaterTemp;
 }
@@ -87,7 +87,7 @@ function addRow(respData) {
     }
 }
 
-function redirectToBooking(id){
+function redirectToBooking(id) {
     location.replace('/html/show-booking.html?showId=' + id);
 }
 
@@ -111,7 +111,7 @@ if (newShowBtn) {
 
         splitStr = data.date.split("-");
         newDate = splitStr[0] + "-" + splitStr[1] + "-" + splitStr[2]
-       
+
 
         splitStartTime = data.time.split(":");
         splitStartTime[0] = parseInt(splitStartTime[0]);
@@ -122,15 +122,15 @@ if (newShowBtn) {
 
         splitStartTime[0] = splitStartTime[0] + hours;
         splitStartTime[1] = splitStartTime[1] + minutes
-        if(splitStartTime[1] > 59){
+        if (splitStartTime[1] > 59) {
             splitStartTime[0] = splitStartTime[0] + 1;
             splitStartTime[1] = splitStartTime[1] % 60;
         }
-        
+
         let newEnd = "";
-        if(splitStartTime[1] >= 0 && splitStartTime[1] <= 9){
+        if (splitStartTime[1] >= 0 && splitStartTime[1] <= 9) {
             newEnd = splitStartTime[0] + ":" + "0" + splitStartTime[1];
-        }else{
+        } else {
             newEnd = splitStartTime[0] + ":" + splitStartTime[1];
         }
 
@@ -143,23 +143,32 @@ if (newShowBtn) {
             start: data.time,
             end: newEnd
         }
-        
+
 
         if (data) {
             createEvent(calendarData)
-            setTimeout(function() {
+            setTimeout(function () {
                 console.log(globalId)
-            },2000)
-            newShow(data)
+                data = {
+                    date: dateInput.value,
+                    time: timeInput.value,
+                    theater: theater,
+                    movie: movie,
+                    calendarId: globalId
+                }
 
-            for(let i = 0; i < showInputFields.length; i++){
-                showInputFields[i].value = '';
-            }
-            for(let i = 0; i < formSelects.length; i++){
-                formSelects[i].selectedIndex = 0;
-            }
+                newShow(data)
 
-            alert("Show Created!")
+                for (let i = 0; i < showInputFields.length; i++) {
+                    showInputFields[i].value = '';
+                }
+                for (let i = 0; i < formSelects.length; i++) {
+                    formSelects[i].selectedIndex = 0;
+                }
+
+                alert("Show Created!")
+            }, 2000)
+
         }
     })
 }
@@ -167,9 +176,9 @@ if (newShowBtn) {
 
 
 function fillDropDownMovies(movie, theater) {
-        const el = document.createElement("option");
-        el.textContent = movie.title;
-        el.setAttribute("value", `{
+    const el = document.createElement("option");
+    el.textContent = movie.title;
+    el.setAttribute("value", `{
             "id":"${movie.id}",
             "title":"${movie.title}",
             "genre":"${movie.genre}",
@@ -177,8 +186,8 @@ function fillDropDownMovies(movie, theater) {
             "movieDuration":"${movie.movieDuration}",
             "artist":"${movie.artist}"
             }`);
-        dropDownMovies.appendChild(el);
-    }
+    dropDownMovies.appendChild(el);
+}
 
 async function getMoviesForDropDown() {
     data = await fetch(url + "/movies");
@@ -187,8 +196,8 @@ async function getMoviesForDropDown() {
 }
 
 
-if(dropDownTheaters){
-dropDownTheaters.addEventListener("change", async function(){
-    await newTheater(JSON.parse(dropDownTheaters.value));
-})
+if (dropDownTheaters) {
+    dropDownTheaters.addEventListener("change", async function () {
+        await newTheater(JSON.parse(dropDownTheaters.value));
+    })
 }

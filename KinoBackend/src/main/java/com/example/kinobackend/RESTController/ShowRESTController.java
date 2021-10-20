@@ -48,6 +48,7 @@ public class ShowRESTController {
             updatedShow.setDate(show.getDate());
             updatedShow.setTime(show.getTime());
             updatedShow.setTheater(show.getTheater());
+            updatedShow.setCalendarId(show.getCalendarId());
             showRepository.save(updatedShow);
         }
         return new ResponseEntity<>(show, HttpStatus.OK);
