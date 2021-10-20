@@ -108,7 +108,45 @@ if (newShowBtn) {
             theater: theater,
             movie: movie
         }
+
+        splitStr = data.date.split("-");
+        newDate = splitStr[0] + "-" + splitStr[1] + "-" + splitStr[2]
+       
+
+        splitStartTime = data.time.split(":");
+        splitStartTime[0] = parseInt(splitStartTime[0]);
+        splitStartTime[1] = parseInt(splitStartTime[1]);
+
+        let hours = Math.floor(data.movie.movieDuration / 60)
+        let minutes = data.movie.movieDuration % 60;
+
+        splitStartTime[0] = splitStartTime[0] + hours;
+        splitStartTime[1] = splitStartTime[1] + minutes
+        if(splitStartTime[1] > 59){
+            splitStartTime[0] = splitStartTime[0] + 1;
+            splitStartTime[1] = splitStartTime[1] % 60;
+        }
+        
+        let newEnd = "";
+        if(splitStartTime[1] >= 0 && splitStartTime[1] <= 9){
+            newEnd = splitStartTime[0] + ":" + "0" + splitStartTime[1];
+        }else{
+            newEnd = splitStartTime[0] + ":" + splitStartTime[1];
+        }
+
+
+        let calendarData = {
+            title: data.movie.title,
+            seats: data.theater.availableSeats,
+            theater: data.theater.name,
+            date: newDate,
+            start: data.time,
+            end: newEnd
+        }
+        
+
         if (data) {
+            createEvent(calendarData)
             newShow(data)
 
             for(let i = 0; i < showInputFields.length; i++){

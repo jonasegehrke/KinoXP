@@ -62,10 +62,19 @@
 
 <body>
 
+    <button id="authorize_button" style="display: none;">Authorize</button>
+    <button id="create-event">Create TEST Event</button>
+    <button id="signout_button" style="display: none;">Sign Out</button>
   
     <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23616161&ctz=Europe%2FCopenhagen&showPrint=0&title=Kino%20XP%20Shows&src=YXFscnNnaXVrMzVpamdyaWE3MWJjcGVyNDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%237CB342" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 
+    <script src="../js/calendar.js"></script>
+
+    <!--Google calendar api-->
+    <script src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
     
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
