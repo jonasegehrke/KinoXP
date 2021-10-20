@@ -1,8 +1,8 @@
  
 
  // Client ID and API key from the Developer Console
- var CLIENT_ID = '255944457163-jfadjaradaphkghnb0nnhd4r3pfmii4k.apps.googleusercontent.com';
- var API_KEY = 'AIzaSyBhwEHyNZj7DspTUPw6ZFMRLaRfoORIyxo'
+ var CLIENT_ID = '53484440533-6njh1rkihcknipgj25pjhdttl9r8m4h3.apps.googleusercontent.com';
+ var API_KEY = 'AIzaSyCHRrtOuSozbDoNUtEX9vToYgWJilD0iTs'
 
  // Array of API discovery doc URLs for APIs used by the quickstart
  var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -97,7 +97,7 @@ var globalId;
      };
  
      var request = gapi.client.calendar.events.insert({
-         'calendarId': 'aqlrsgiuk35ijgria71bcper48@group.calendar.google.com',
+         'calendarId': '8nna984a8ncp4s3e9uqa6m0ces@group.calendar.google.com',
          'resource': event,
      });
 
