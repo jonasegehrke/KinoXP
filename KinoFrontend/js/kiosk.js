@@ -40,7 +40,7 @@ function kioskTableHeadlines() {
 
     row.insertCell(0).innerHTML = `Item id`;
     row.insertCell(1).innerHTML = `Name (Editable)`;
-    row.insertCell(2).innerHTML = `Price (Editable)`;
+    row.insertCell(2).innerHTML = `Price in DKK (Editable)`;
     row.insertCell(3).innerHTML = `Amount`;
     
     row.insertCell(4).innerHTML = `Save Edit`;
@@ -62,7 +62,7 @@ function addRow(respData) {
 
         row.insertCell(0).innerHTML = kioskItem.kioskItemId
         row.insertCell(1).innerHTML = `<p contentEditable="true" class="item-name">${kioskItem.name}</p>`;
-        row.insertCell(2).innerHTML = `<p contentEditable="true" class="item-price">${kioskItem.price} ,- </p>`;
+        row.insertCell(2).innerHTML = `<p contentEditable="true" class="item-price">${kioskItem.price}</p>`;
         row.insertCell(3).innerHTML = `<p contentEditable="true" class="amount-input"></p>`;
         
         row.insertCell(4).innerHTML = `<a onclick="saveRow(this)"><button type="button" class="btn btn-secondary uil uil-save"></button></a>`
@@ -98,6 +98,8 @@ function calculate(){
     const names = document.querySelectorAll(".item-name");
     const amounts = document.querySelectorAll(".amount-input");
     const prices = document.querySelectorAll(".item-price");
+    let item = document.createElement('li');
+
     let total = 0;
     let cart = [];
     for (let i = 0; i<amounts.length; i++){
@@ -114,14 +116,19 @@ function calculate(){
         }
         
     }
+     while(recieptList.firstChild ){
+           recieptList.removeChild(recieptList.firstChild ); 
+        }
+
     for (let i = 0; i<cart.length; i++){
-        const item = document.createElement('li');
-        item.innerHTML = `${cart[i].name}         ${cart[i].amount}     ${cart[i].price} ,-`
+        item = document.createElement('li');
+        item.innerHTML = `${cart[i].amount} x ${cart[i].name} = ${cart[i].price} kr`
         recieptList.appendChild(item);
     }
+
     console.log(cart);
 
-    totalLabel.innerHTML = total;
+    totalLabel.innerHTML = total + " kr";
 
 }
 
@@ -138,7 +145,7 @@ async function saveRow(rowObj) {
 
     const name = row.childNodes[1].firstChild.textContent;
     const priceTemp = row.childNodes[2].firstChild.textContent;
-    const price =parseInt(priceTemp.substring(0,priceTemp.length - 4));
+    const price = parseInt(priceTemp);
     const id = row.childNodes[0].firstChild.nodeValue;
     let kioskItem ={
         kioskItemId: id,
