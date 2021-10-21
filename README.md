@@ -6,15 +6,15 @@ Remove dependency from pom.xml:
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>9.4.0.jre11</version> <!-- Change this to jre16 for project testing -->
- </dependency>```
+ </dependency>
     
 
 For use with azure SQL server keep (Look at the comment for local run):
-```<dependency>
+<dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>9.4.0.jre11</version> <!-- Change this to your JRE version if run locally -->
-</dependency>```
+</dependency>
     
 Make sure to change packaging to jar if run locally 
 <packaging>jar</packaging>
