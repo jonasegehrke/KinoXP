@@ -1,4 +1,9 @@
 # KinoXP
+
+This is a school project created with JPA & a static frontend. 
+The website uses a backend REST api to create a fully functional system for cinema administration
+
+## Setup
  ```
 For local use:
 Remove dependency from pom.xml:
